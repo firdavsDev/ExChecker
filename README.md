@@ -14,6 +14,11 @@ Currently the code documentation is written in Latex in Spanish.
 
 You can access it in *memoria* folder.
 
+## Requirements
+Before execute app you must to install this packages:
+
+```$ sudo apt-get install postgresql-client ffmpeg libsm6 libxext6 python3-opencv wkhtmltopdf poppler-utils zip```
+
 ## TODO
 - Write test
 - Clean code
