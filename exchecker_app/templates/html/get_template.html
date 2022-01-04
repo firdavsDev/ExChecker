@@ -1,0 +1,79 @@
+{% extends "html/base.html" %}
+
+{% block additional_head %}
+	<script src="get_template.js"></script>
+{% endblock %}
+
+{# Sidebar Expand #}
+{% block get_template_sidebar %}
+    {% with get_template=True %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Generar Plantilla</h6>
+		</div>
+		<div class="card-body">
+			<form action="{% url 'get_template' %}"  id="get_template_form" method="post">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="school_name">Identificación del Examen</label>
+					<input type="text" id="school_name" class="form-control" name="school_name" maxlength="32" placeholder="Ejemplo: Nombre del centro, asignatura, curso, etc..." required>
+				</div>
+				<div class="form-group">
+					<label for="lines">Identificación del Alumno</label>
+					<textarea wrap="hard" maxlength="500" class="form-control"
+					id="lines" rows="3" name="lines" placeholder="Ejemplo:
+	Nombre:
+	Apellidos:"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="n_questions">Número de preguntas</label>
+					<input type="number" min="1" max="30" id="n_questions" class="form-control" name="n_questions" placeholder="30 preguntas como máximo" required>
+				</div>
+				<div class="form-group">
+					<label for="n_responses">Número de respuestas</label>
+					<input type="number" min="1" max="5" id="n_responses" class="form-control" name="n_responses" placeholder="5 respuestas como máximo" required>
+				</div>
+
+				{% if request.user.is_authenticated %}
+					<input type="checkbox" id="template_name_check" name="template_name_check" value="ok">
+					<label for="template_name_check">Nombre de la plantilla
+						<input class="oculto" type="text" id="template_name" name="template_name" maxlength="15">
+					</label>
+				{% endif %}
+				<div class="center">
+					<input class="btn btn-info no-modal" id="send_button" type="submit" value="Generar">
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	
+	<!-- Logout Modal (It is show when input button is press => Javascript control)-->
+    <div class="modal fade" id="getTemplateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Generando Plantilla</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Tu plantilla se está generando. Este proceso puede tardar unos segundos. Por favor, espera.</div>
+                <div class="modal-footer">
+                    <div class="loader_icon center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

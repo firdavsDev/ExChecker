@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<html>
+   <head>
+      <title>Exchecker-template</title>
+      <meta charset="utf-8" />
+   </head>
+
+   <body>
+      <div id="marker_up">
+         <div id="marker_up_r">
+            <img class="marker" src="{{ marker_url }}"></img>
+         </div>
+         <div id="marker_up_l">
+            <img class="marker" src="{{ marker_url }}"></img>
+         </div>
+      </div>
+      
+      <div id="header">
+         <div id="code_id">
+            <div class="center">Código de Alumno: _ _ _ _ _</div>
+            <table id="table_id">
+               {% for row in [0,1,2,3,4,5,6,7,8,9] %}
+               <tr class="table_id_row">
+                  <td class="center small_text">{{ row }}</td>
+                  {% for element in [0,1,2,3,4] %}
+                  <td class="border_cell table_id_cell"></td>
+                  <td class="space_cell" ></td>
+                  {% endfor %}
+               </tr>
+               <tr class="space_row"></tr>
+               {% endfor %}
+            </table>
+         </div>
+
+         <div id="school_data">
+            <div id="exam_id">
+               <h2 id="school_name">{{ school_name }}</h1>
+               <hr>
+            </div>
+
+            <div id="lines">
+               <pre>{{ lines }}</pre>
+            </div>
+            <div id="template_info">
+               <hr>
+                  <div id="template_info_table_r">
+                     <table class="template_info_table">
+                        <tr class="template_info_row">
+                           <th></th>
+                           <th></th>
+                           {% for n in info_responses %}
+                           {% if n == 1 %}
+                           <th class="border_cell black_backgroud"></th>
+                           {% else %}
+                           <th class="border_cell"></th>
+                           {% endif %}
+                           {% endfor %}
+                        </tr>
+                     </table>
+                  </div>
+
+                  <div id="template_info_table_l">
+                     <table class="template_info_table">
+                        <tr class="template_info_row">
+                           {% for n in info_questions %}
+                           {% if n == 1 %}
+                           <th class="border_cell black_backgroud"></th>
+                           {% else %}
+                           <th class="border_cell"></th>
+                           {% endif %}
+                           {% endfor %}
+                        </tr>
+                     </table>
+                  </div>
+               <hr>
+            </div>
+         </div>
+      </div>
+
+      <div id="questions">
+         <table id="questions_table">
+            <caption>SECCIÓN DE PREGUNTAS</caption>
+            <tr>
+               {% for row in [0,1,2] %}
+               <td>
+               <div>
+                  <div class="responses_container">
+                     {% for response in responses %}
+                        <div class="letters">{{ response }}</div>
+                     {% endfor %}
+                  </div>
+               </div>
+               </td>
+               {% endfor %}
+            </tr>
+            {% for row in rows %}
+            <tr>
+            {% for question in row %}
+               {% if question %}
+               <td>
+                  <div>
+                     <div class="responses_container">
+                     {% for response in responses %}
+                        <div class="dot"></div>
+                     {% endfor %}
+                     </div>
+                     <div class="number_container">
+                        <span class="number">{{ question }}.</span>
+                     </div>
+                  </div>
+               </td>
+               {% else %}
+               <td></td>
+               {% endif %}
+            {% endfor %}
+            </tr>
+            {% endfor %}
+         </table>
+      </div>
+
+      <div id="marker_down">
+         <div id="marker_down_r">
+            <img class="marker" src="{{ marker_url }}"></img>
+         </div>
+         <div id="marker_down_l">
+            <img class="marker" src="{{ marker_url }}"></img>
+         </div>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,5 @@
+EXCHECKER
+REF: 1234
+
+DATE: {date}
+Para confirmar el proceso de registración de cuenta, por favor siga el siguiente enlace: {link}

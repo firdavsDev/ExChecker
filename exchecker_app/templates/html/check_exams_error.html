@@ -1,0 +1,11 @@
+{% extends "html/base.html" %}
+
+{% block content %}
+	<!-- Check Exams Error Text -->
+	<div class="text-center">
+		<div class="error mx-auto" data-text="Error">Error</div>
+		<p class="lead text-gray-800 mb-5">¡Vaya! Parece que ha habido un error corrigiendo tus exámenes</p>
+		<p class="text-gray-500 mb-0">ERROR: {{ text }}</p>
+		<a href="/">&larr; Volver a la aplicación</a>
+	</div>
+{% endblock %}

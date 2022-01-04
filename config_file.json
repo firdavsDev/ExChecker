@@ -1,0 +1,17 @@
+{
+    "checked_folder_tmp": "/tmp/exchecker/",
+    "inputs_folder": "OMRChecker/inputs/",
+    "omr_template": "./OMRChecker/template.json",
+    "omr_main": "./OMRChecker/main.py",
+    "output_dir": "./OMRChecker/outputs/",
+    "csvs_dir": "./exchecker_app/static/csvs/",
+    "templates_dir": "./exchecker_app/static/templates/",
+    "loglevel": "DEBUG",
+    "log_path": "./logs/log.txt",
+    "users_log_path": "./logs/users_log.txt",
+    "maxBytes_log": 50000,
+    "backupCount": 3,
+    "web_url": "127.0.0.1:8000",
+    "marker_url": "http:127.0.0.1:8000/static/template_marker.jpg",
+    "version_file": "./VERSION.txt"
+}

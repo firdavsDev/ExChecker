@@ -1,0 +1,5 @@
+EXCHECKER
+REF: 1234
+
+DATE: {date}
+Para restaurar su contraseña, por favor siga el siguiente enlace: {link}

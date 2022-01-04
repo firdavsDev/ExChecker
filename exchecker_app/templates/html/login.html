@@ -1,0 +1,83 @@
+{% extends "html/head.html" %}
+
+{% block body %}
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">¡Bienvenido de Nuevo!</h1>
+                                    </div>
+                                    <form class="user" method="post" action="{% url 'login' %}">
+										{% csrf_token %}
+                                        <div class="form-group">
+                                            <select id="input_username" name="username" class="form-control">
+                                                <option hidden disabled selected value>Elige tu usuario</option>
+                                                {% for user in all_users %}
+                                                    <option>{{ user }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <!--<div class="form-group">
+                                            <input type="text" name="username" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Introduce usuario...">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="password" name="pass" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Contraseña">
+                                        </div>-->
+                                        {% if wrong %}
+											<p>No existe ninguna cuenta con ese nombre de usuario.</p>
+										{% endif %}
+                                        <!--<div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Recuerdame</label>
+                                            </div>
+                                        </div>-->
+                                        <input value="Login" type="submit" class="btn btn-primary btn-user btn-block">
+                                        <hr>
+                                        <!--<a href="#" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a>
+                                        <a href="#" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a>-->
+                                    </form>
+                                    <p class="mb-4 center">Este sistema no utiliza contraseñas.
+                                    Podrás acceder con tu nombre de
+                                    usuario a la aplicación.</p>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url 'register' %}">¡Crear una cuenta!</a>
+                                    </div>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small"  href="/">&larr; Volver a la Aplicación</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+	
+{% endblock %}

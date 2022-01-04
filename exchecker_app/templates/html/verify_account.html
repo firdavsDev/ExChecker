@@ -1,0 +1,31 @@
+{% extends "html/head.html" %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-2">¡Enhorabuena!</h1>
+                                <p class="mb-4">Tu cuenta ha sido verificada correctamente.</p>
+                                <br>
+                                <p class="mb-4">Intenta acceder a la aplicación con tu nueva cuenta.</p>
+                            </div>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="{% url 'login' %}">Ingresa en tu cuenta.</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,166 @@
+.center {
+	text-align: center;
+}
+.small_text {
+	font-size: 11px;
+}
+
+#questions_table th, #questions_table td {
+	width:33.333333333%;
+}
+#questions_table tr {
+	height: 5%;
+}
+#questions_table {
+	width:100%;
+	height: 100%;
+	border: 0.1px solid #c5c5c5;
+}
+
+#table_id {
+	width: 80%;
+	height: 90%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 0.2cm;
+}
+.table_id_cell{
+	width: 13%;
+ }
+.space_cell{
+	width: 3%;
+}
+.space_row{
+	height: 1%;
+}
+.table_id_row {
+	height: 8%;
+	width: 100%;
+ }
+ .border_cell {
+	border-style: solid;
+	border-width: 1px;
+ }
+
+
+ #code_id {
+	float: right;
+	width: 40%;
+	height: 100%;
+ }
+ #school_data {
+	width: 60%;
+	height: 100%;
+ }
+
+#template_info_table_r{
+	float: right;
+	width: 30%;
+	height: 90%;
+}
+#template_info_table_l{
+	width: 30%;
+	height: 90%;
+}
+.template_info_table {
+	width: 100%;
+	height: 100%;
+}
+.template_info_row{
+	height: 15%;
+}
+.template_info_row th{
+	width: 15%;
+}
+
+#exam_id{
+	height: 10%;
+}
+#lines{
+	height: 60%;
+	color: black;
+	font-size: large; 
+	font-family: Helvetica, Arial, sans-serif;
+}
+#template_info {
+    height: 13%;
+}
+.black_backgroud{
+	background-color: black;
+}
+
+@media print {
+	body{
+		width: 21cm;
+		height: 29.7cm;
+		margin: 30mm 30mm 30mm 30mm; 
+		/* change the margins as you want them to be. */
+	} 
+}
+#header{
+	height: 25%;
+	margin-bottom: 1cm;
+}
+#questions {
+	height: 65%;
+}
+.dot {
+	 height: 0.7cm;
+	 width: 0.7cm;
+	 display: inline-block;
+	 border: 1px solid black;
+	 text-align: center;
+	 margin-left: 0.1cm;
+	 margin-right: 0.1cm;
+}
+.letters {
+	height: 0.7cm;
+	width: 0.7cm;
+	display: inline-block;
+	text-align: center;
+	margin-left: 0.1cm;
+	margin-right: 0.1cm;
+}
+.number {
+	font-weight: bold;
+}
+
+#school_name {
+	margin: auto;
+}
+
+.responses_container{
+	float: right;
+	width: 90%;
+}
+
+.number_container{
+	width: 10%;
+}
+
+#marker_up{
+	height: 5%;
+}
+
+#marker_down{
+	height: 5%;
+}
+
+#marker_up_r, #marker_down_r{
+	float:right;
+	position: relative;
+	left: 10%;
+	width: 7%;
+	height: 90%;
+}
+#marker_up_l, #marker_down_l{
+	position: relative;
+	right: 10%;
+	width: 7%;
+	height: 90%;
+}
+
+.marker{
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,66 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+
+    {% if there_are_templates %}
+
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Mis Plantillas</h1>
+            <form method="post" action="{% url 'download_all_templates' %}">
+                {% csrf_token %}
+                <button value="" type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-download fa-sm text-white-50"></i>
+                    Descargar Todas las Plantillas
+                </button>
+            </form>
+        </div>
+
+        {% for row in templates %}
+            <div class="row">
+                {% for t in row %}
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        {{ t.0 }}:</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ t.1 }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="{% static t.2 %}" class="d-none d-sm-inline-block btn btn-sm btn-info shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i></a>
+                                </div>
+                                <form method="post" id="delete_template_form{{ forloop.counter0 }}" action="{% url 'my_templates' %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="hidden" name="template_to_delete" class="form-control form-control-user"
+                                            value="{% static t.2 %}">
+                                    </div>
+                                </form>
+                                <div class="col-auto">
+                                    <button value="" type="submit" form="delete_template_form{{ forloop.counter0 }}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">
+                                        <i class="fas fa-trash-alt fa-sm text-white-50"></i>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <img src="{% static t.3 %}" width="200" height="250">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+    {% else %}
+        <div class="text-center">
+		<p class="text-gray-500 mb-0">¡Vaya! Parece que aún no has descargado ninguna plantilla.<br>
+        Prueba a decargar alguna desde la sección <a href={% url 'get_template' %}>generar plantilla</a>.</p>
+	    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

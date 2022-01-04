@@ -1,0 +1,84 @@
+{% extends "html/base.html" %}
+
+{% block additional_head %}
+	<!-- include FilePond library -->
+	<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+
+	<!-- include FilePond jQuery adapter -->
+	<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
+
+	<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+	<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+
+	<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+	<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+	<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+	<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+	<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+	<script src="check_exams.js"></script>
+{% endblock %}
+
+{# Sidebar Expand #}
+{% block check_exams_sidebar %}
+    {% with check_exams=True %}
+        {{ block.super }}
+    {% endwith%}
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">Corregir Exámenes</h6>
+		</div>
+		<div class="card-body">
+			<form action="{% url 'check_exams' %}"  id="check_exams_form" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="max_note">Nota Máxima del Examen</label>
+					<input type="number" min="0" id="max_note" class="form-control" name="max_note" placeholder="Nota máxima del examen" step="any" value=10 required>
+				</div>
+
+				<input type="radio" id="no_penalty" name="penalty" value="1" checked>
+				<label for="no_penalty">El error no penaliza</label><br>
+				<input type="radio" id="penalty_formula" name="penalty" value="2">
+				<label for="penalty_formula">Penaliza según la fórmula tradicional (Ej: penalización de 1/5 si la pregunta tiene 5 respuestas)</label><br>
+				<div>
+					<input type="radio" id="penalty_personalized" name="penalty" value="3">
+					<label for="penalty_personalized">Penalización personalizada
+						<input class="oculto" type="number" min="0" max="1" id="penalty" name="penalty_value" placeholder="Entre 0 y 1" step="any">
+					</label>
+				</div>
+				
+				<input type="file" class="my-pond" id="customFile" name="filepond"/>
+
+				<div class="center">
+					<input class="btn btn-info" id="send_button" type="submit" value="Corregir">
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+    <div class="modal fade" id="check_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Corrigiendo Exámenes</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Estamos corrigiendo tus exámenes. Este proceso puede tardar unos minutos dependiendo del número de exámenes subidos. Por favor, espera.</div>
+                <div class="modal-footer">
+                    <div class="loader_icon center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

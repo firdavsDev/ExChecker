@@ -1,0 +1,95 @@
+{% extends "html/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+
+	<h1 class="h3 mb-2 text-gray-800 center">¡Bienvenido a ExChecker!</h1>
+
+	<p class="mb-4 center">
+	ExChecker corrige tus exámenes de forma online utilizando tecnología
+	<a href="https://github.com/Udayraj123/OMRChecker" target="_blank" rel="noopener noreferrer">OMR</a> (Optical Mark Recognition).
+
+	<br>
+
+	La aplicación web está desarrollada con el objetivo de disminuir el tiempo y esfuerzo
+	en la corrección de exámenes tipo test.
+
+	<br>
+
+	Se encarga de generar plantillas adecuadas a nuestras necesidades, como número de
+	preguntas o número de respuestas.
+	</p>
+
+	<div class="row">
+
+		<div class="col-lg-6">
+
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 center">
+					<h6 class="m-0 font-weight-bold text-primary">¿Cómo generar nuestra plantilla?</h6>
+				</div>
+				<div class="card-body">
+					<div class="text-center">
+						<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static "frontend_resources/img/undraw_design_notes.svg" %}" alt="...">
+					</div>
+					<ul>
+						<li>Para generar una plantilla de examen tipo test debemos dirigirnos a la sección <b>"Generar Plantilla"</b>.</li>
+						<li>Podremos añadir una identificación del examen, como el nombre del centro, asignatura, curso...</b>.</li>
+						<li>Una identificación para el alumno: nombre, apellidos...</b>.</li>
+						<li>Finalmente el número de preguntas y número de respuestas que queramos que tenga nuestro examen.</b>.</li>
+					</ul>
+
+				El resultado será algo parecido a esto:
+				</div>
+				
+				<img class="img-fluid px-3 px-sm-4 mt-3 mb-4 img_center" style="width: 50rem;" src={% static "example_layout_info.png" %} alt="...">
+			</div>
+
+		</div>
+
+		<div class="col-lg-6">
+
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 center">
+					<h6 class="m-0 font-weight-bold text-primary">Rellenar correctamente el examen es importante.</h6>
+				</div>
+				<div class="card-body">
+					<div class="text-center">
+						<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static "frontend_resources/img/undraw_exams.svg" %}" alt="...">
+					</div>
+					{% load static %}
+					<ul>
+						<li>La aplicación corregirá automáticamente tus exámenes tipo test gracias a la tecnología
+					<a href="https://github.com/Udayraj123/OMRChecker" target="_blank" rel="noopener noreferrer">OMR</a> (Optical Mark Recognition).</li>
+						<li><a href={% static "guia_para_profesores.pdf" %}>Guía para profesores.</a></li>
+						<li><a href={% static "guia_para_alumnos.pdf" %}>Guía para tus alumnos.</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="card shadow mb-4">
+				<div class="card-header py-3 center">
+					<h6 class="m-0 font-weight-bold text-primary">¿Cómo corregir nuestros exámenes?</h6>
+				</div>
+				<div class="card-body">
+					<div class="text-center">
+						<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="{% static "frontend_resources/img/undraw_Notebook.svg" %}" alt="...">
+					</div>
+
+					<ul>
+						<li>Para corregir nuestros exámenes, debemos irnos a la sección <b>"Corregir Exámenes"</b>.</li>
+						<li>En esa pestaña subiremos nuestros exámenes rellenados y la plataforma los corregirá.</li>
+						<li>Las opciones de subida y los formatos permitidos son los siguientes:
+							un único <b>pdf</b>, varios <b>pdf</b>, varios <b>png</b> y varios <b>jpg</b>.</li>
+						<li>Obtendremos los resultados en la misma aplicación y tendremos la posibilidad de descargarlos en una hoja de cálculo.</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+{% endblock %}
