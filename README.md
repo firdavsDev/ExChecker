@@ -22,6 +22,7 @@ Before execute app you must to install this packages:
 ## TODO
 - Write test
 - Clean code
+- Write web application in English too
 - Write docs in English
 - Do tag to version 1.0.0
 - Write Changelog
