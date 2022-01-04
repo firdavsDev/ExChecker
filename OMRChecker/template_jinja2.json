@@ -1,0 +1,94 @@
+{
+  "Dimensions": [
+    1653,
+    2339
+  ],
+  "BubbleDimensions": [
+    15,
+    15
+  ],
+  "Concatenations": {
+    "Roll": [
+      "roll0",
+      "roll1",
+      "roll2",
+      "roll3"
+    ]
+  },
+  "Singles": [
+    {% for q in single_questions %}
+    "{{ q }}"{{ "," if not loop.last }}
+    {% endfor %}
+  ],
+  "QBlocks": {
+    "Roll": {
+      "qType": "QTYPE_ROLL",
+      "orig": [
+        1307,
+        302
+      ],
+      "bigGaps": [
+        1,
+        1
+      ],
+      "gaps": [
+        36,
+        36
+      ],
+      "qNos": [
+        [
+          [
+            "roll0",
+            "roll1",
+            "roll2",
+            "roll3"
+          ]
+        ]
+      ]
+    },
+    "MCQBlock1": {
+      {% if n_responses == 1 %}
+      "qType": "QTYPE_MCQ1",
+      {% elif n_responses == 2 %}
+      "qType": "QTYPE_MCQ2",
+      {% elif n_responses == 3 %}
+      "qType": "QTYPE_MCQ3",
+      {% elif n_responses == 4 %}
+      "qType": "QTYPE_MCQ4",
+      {% elif n_responses == 5 %}
+      "qType": "QTYPE_MCQ5",
+      {% endif %}
+      "orig": [
+        271,
+        923
+      ],
+      "bigGaps": [
+        159,
+        -1097
+      ],
+      "gaps": [
+        66,
+        122
+      ],
+      "qNos": [
+        [
+          [
+            {% for q in questions_row1 %}
+            "{{ q }}"{{ "," if not loop.last }}
+            {% endfor %}
+          ],
+          [
+            {% for q in questions_row2 %}
+            "{{ q }}"{{ "," if not loop.last }}
+            {% endfor %}
+          ],
+          [
+            {% for q in questions_row3 %}
+            "{{ q }}"{{ "," if not loop.last }}
+            {% endfor %}
+          ]
+        ]
+      ]
+    }
+  }
+}
